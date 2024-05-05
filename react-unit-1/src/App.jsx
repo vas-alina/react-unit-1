@@ -33,7 +33,7 @@ const onInputButtonClick = () => {
   console.log(newItem, 'элемент', newList, 'список')
   
     }  else {
-      setError('Введенное значение должно содержать минимум 3 символа')
+      setError('Введенное значение должно содержать минимум 3 символа!')
   }
 }
 const isValueVaild = value.trim().length >= 3
@@ -44,28 +44,26 @@ const isValueVaild = value.trim().length >= 3
     
     <>
 
-       <div className={styles.app}>
-    <h1 className={styles['page-heading']}>Ввод значения</h1>
-    <p className={styles['no-margin-text']}>Текущее значение:  
-      <output className={styles['current-value']}>{value}</output>
-    </p>
-     
-     {error !== '' && <div className={styles.error} >{error}</div>}
-    <div className={styles['buttons-container']}>
+      <div className={styles.app}>
+        <h1 className={styles['page-heading']}>Ввод значения</h1>
+        <p className={styles['no-margin-text']}>Текущее значение:  
+        <output className={styles['current-value']}>{value}</output>
+        </p>
+       {error !== '' && <div className={styles.error} >{error}</div>}
+        <div className={styles['buttons-container']}>
     
-      <button className={styles.button} onClick={() => onInputButtonClick()}>Ввести новое</button>
-      <button className={styles.button} disabled={!isValueVaild}>Добавить в список</button>
-    </div>
-    <div className={styles['list-container']}>
-      <h2 className={styles['list-heading']}>Список:</h2>
-      {list.length > 0 ? (
+        <button className={styles.button} onClick={() => onInputButtonClick()}>Ввести новое</button>
+        <button className={styles.button} disabled={!isValueVaild}>Добавить в список</button>
+      </div>
+      <div className={styles['list-container']}>
+        <h2 className={styles['list-heading']}>Список:</h2>
+        {list.length > 0 ? (
         <ul className={styles.list}> {
-        list.map((item) => (
+          list.map((item) => (
           <li key={item.id} className={styles['list-item']}>{item.value} - {item.createdAt}</li>
         ))} 
         </ul> ) : ( <p className={styles['no-margin-text']}>Нет добавленных элементов</p>
       )}
-      
     </div>
   </div>
     </>
